@@ -17,7 +17,7 @@ public class SwapiWebClient {
         return WebClient.create(url);
     }
 
-    private Mono<SwapiPeopleResponse> getLuke() {
+    public Mono<SwapiPeopleResponse> getLuke() {
         return client(SWAPI_LUKE_URL)
                 .get()
                 .uri(uri -> uri.path("")
@@ -32,7 +32,7 @@ public class SwapiWebClient {
                 });
     }
 
-    private Mono<SwapiFilmResponse> getFilm(String url) {
+    public Mono<SwapiFilmResponse> getFilm(String url) {
         return client(url)
                 .get()
                 .uri(uri -> uri.path("")
