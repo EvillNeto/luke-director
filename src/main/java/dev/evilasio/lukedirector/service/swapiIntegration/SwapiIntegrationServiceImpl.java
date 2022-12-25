@@ -5,7 +5,6 @@ import java.util.List;
 import org.springframework.stereotype.Service;
 
 import dev.evilasio.lukedirector.client.SwapiWebClient;
-import dev.evilasio.lukedirector.domain.dto.FilmDto;
 import dev.evilasio.lukedirector.domain.filter.FilmFilter;
 import dev.evilasio.lukedirector.domain.response.swapi.SwapiFilmResponse;
 import dev.evilasio.lukedirector.domain.response.swapi.SwapiPeopleResponse;
@@ -19,19 +18,17 @@ public class SwapiIntegrationServiceImpl implements SwapiIntegrationService {
     private final SwapiWebClient swapiWebClient;
 
     @Override
-    public List<FilmDto> getAllLukeFilms() {
+    public List<SwapiFilmResponse> getAllLukeFilms() {
         Flux<String> filmsFlux = swapiWebClient.getLuke()
                 .map(SwapiPeopleResponse::getFilms)
                 .flatMapMany(Flux::fromIterable);
 
-        List<SwapiFilmResponse> films = filmsFlux.flatMap(swapiWebClient::getFilm)
+        return filmsFlux.flatMap(swapiWebClient::getFilm)
                 .collectList().block();
-
-        return FilmDto.toDto(films);
     }
 
     @Override
-    public List<FilmDto> getLukeFilmsWithFilter(FilmFilter filter) {
+    public List<SwapiFilmResponse> getLukeFilmsWithFilter(FilmFilter filter) {
         return getAllLukeFilms().stream()
                 .filter(film -> {
                     if (filter == null) {

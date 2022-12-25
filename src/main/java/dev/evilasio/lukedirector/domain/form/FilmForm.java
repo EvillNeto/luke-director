@@ -6,6 +6,7 @@ import org.springframework.format.annotation.DateTimeFormat;
 
 import com.fasterxml.jackson.annotation.JsonProperty;
 
+import dev.evilasio.lukedirector.domain.entity.FilmEntiity;
 import jakarta.validation.constraints.NotBlank;
 import jakarta.validation.constraints.NotNull;
 import lombok.AllArgsConstructor;
@@ -35,4 +36,13 @@ public class FilmForm {
     @DateTimeFormat(iso = DateTimeFormat.ISO.DATE)
     @NotNull(message = "field 'release_date' can't be blank or null")
     private LocalDate releaseDate;
+
+    public FilmEntiity toEntity(){
+        return FilmEntiity.builder()
+        .title(this.title)
+        .episodeId(this.episodeId)
+        .director(this.director)
+        .releaseDate(this.releaseDate)
+        .build();
+    }
 }

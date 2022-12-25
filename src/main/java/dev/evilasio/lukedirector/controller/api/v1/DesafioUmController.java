@@ -22,6 +22,6 @@ public class DesafioUmController {
 
     @GetMapping()
     public ResponseEntity<List<FilmDto>> getLukeMovies(@ParameterObject FilmFilter filter) {
-        return ResponseEntity.ok(swapiIntegrationService.getLukeFilmsWithFilter(filter));
+        return ResponseEntity.ok(FilmDto.toDtoFromSwapi(swapiIntegrationService.getLukeFilmsWithFilter(filter)));
     }
 }
