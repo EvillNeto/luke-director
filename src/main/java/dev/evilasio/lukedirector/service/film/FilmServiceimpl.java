@@ -3,6 +3,8 @@ package dev.evilasio.lukedirector.service.film;
 import java.util.List;
 import java.util.Optional;
 
+import org.springframework.data.domain.Page;
+import org.springframework.data.domain.Pageable;
 import org.springframework.http.HttpStatus;
 import org.springframework.stereotype.Service;
 
@@ -25,8 +27,8 @@ public class FilmServiceimpl implements FilmService {
     private final FilmRepository filmRepository;
 
     @Override
-    public List<FilmDto> getFilms(FilmFilter filter) {
-        List<FilmEntiity> films = filmRepository.findAll(FilmSpecification.filmFilter(filter));
+    public Page<FilmDto> getFilms(FilmFilter filter, Pageable pageable) {
+        Page<FilmEntiity> films = filmRepository.findAll(FilmSpecification.filmFilter(filter), pageable);
         return FilmDto.toDto(films);
     }
 

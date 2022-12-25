@@ -34,15 +34,15 @@ public class SwapiIntegrationServiceImpl implements SwapiIntegrationService {
                     if (filter == null) {
                         return true;
                     }
-                    if (filter.getTitle() != null && !filter.getTitle().isEmpty()) {
-                        if (!film.getTitle().toLowerCase().contains(filter.getTitle().toLowerCase())) {
-                            return false;
-                        }
+                    if (filter.getEpisodeId() == null && (filter.getTitle() == null || filter.getTitle().isEmpty())) {
+                        return true;
                     }
-                    if (filter.getEpisodeId() != null) {
-                        if (!film.getEpisodeId().equals(filter.getEpisodeId())) {
-                            return false;
-                        }
+                    if (filter.getTitle() != null && !filter.getTitle().isBlank()
+                            && !film.getTitle().toLowerCase().contains(filter.getTitle().toLowerCase())) {
+                        return false;
+                    }
+                    if (filter.getEpisodeId() != null && !film.getEpisodeId().equals(filter.getEpisodeId())) {
+                        return false;
                     }
                     return true;
                 })

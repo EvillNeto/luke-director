@@ -3,6 +3,9 @@ package dev.evilasio.lukedirector.controller.api.v2;
 import java.util.List;
 
 import org.springdoc.core.annotations.ParameterObject;
+import org.springframework.data.domain.Page;
+import org.springframework.data.domain.Pageable;
+import org.springframework.data.web.PageableDefault;
 import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.DeleteMapping;
 import org.springframework.web.bind.annotation.GetMapping;
@@ -26,8 +29,9 @@ public class DesafioDoisController {
     private final FilmService service;
 
     @GetMapping()
-    public ResponseEntity<List<FilmDto>> getAllMovies(@ParameterObject FilmFilter filter) {
-        return ResponseEntity.ok(service.getFilms(filter));
+    public ResponseEntity<Page<FilmDto>> getAllMovies(@ParameterObject FilmFilter filter,
+            @ParameterObject @PageableDefault(page = 0, size = 10) Pageable pageable) {
+        return ResponseEntity.ok(service.getFilms(filter, pageable));
     }
 
     @PostMapping()
