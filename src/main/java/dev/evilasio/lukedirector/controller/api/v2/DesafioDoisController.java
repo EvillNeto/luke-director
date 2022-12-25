@@ -1,34 +1,50 @@
 package dev.evilasio.lukedirector.controller.api.v2;
 
+import java.util.List;
+
+import org.springdoc.core.annotations.ParameterObject;
 import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.DeleteMapping;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.PostMapping;
+import org.springframework.web.bind.annotation.RequestBody;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RestController;
 
+import dev.evilasio.lukedirector.domain.dto.FilmDto;
+import dev.evilasio.lukedirector.domain.filter.FilmFilter;
+import dev.evilasio.lukedirector.domain.form.FilmForm;
+import dev.evilasio.lukedirector.service.film.FilmService;
+import jakarta.validation.Valid;
+import lombok.RequiredArgsConstructor;
+
 @RestController
 @RequestMapping("/api/v2/luke-movies")
+@RequiredArgsConstructor
 public class DesafioDoisController {
 
+    private final FilmService service;
+
     @GetMapping()
-    public ResponseEntity<?> getAllMovies() {
-        return null;
+    public ResponseEntity<List<FilmDto>> getAllMovies(@ParameterObject FilmFilter filter) {
+        return ResponseEntity.ok(service.getFilms(filter));
     }
 
     @PostMapping()
-    public ResponseEntity<?> saveLukeMovies() {
-        return null;
+    public ResponseEntity<List<FilmDto>> saveLukeMovies(@RequestBody @Valid FilmForm form) {
+        return ResponseEntity.ok(service.saveFilm(form));
     }
 
     @GetMapping("/seed-movies")
-    public ResponseEntity<?> seedLukeMovies() {
-        return null;
+    public ResponseEntity<Void> seedLukeMovies() {
+        service.seedLukeFilms();
+        return ResponseEntity.ok().build();
     }
 
     @DeleteMapping("/clear-all-movies")
-    public ResponseEntity<?> getLukeMovies() {
-        return null;
+    public ResponseEntity<Void> clearAllMovies() {
+        service.clearAllFilms();
+        return ResponseEntity.ok().build();
     }
 
 }
