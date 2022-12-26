@@ -26,7 +26,7 @@
 ### :bookmark_tabs: Funcionalidades
 
 - A api possui [Swagger](http://localhost:8080/swagger-ui/index.html) configurado com descrições para cada metodo
-- O banco de dados [H2](http://localhost:8080/h2-console) pode ser acessado com um atalho na tela do swagger e possui as configurações:
+- O banco de dados [H2](http://localhost:8080/h2-console) pode ser acessado por um atalho na tela do swagger e possui as configurações de acesso:
 ~~~
 spring.datasource.driverClassName=org.h2.Driver
 spring.datasource.url=jdbc:h2:mem:lukedb
@@ -45,3 +45,5 @@ As seguintes ferramentas foram usadas na construção do projeto:
 - [Spring](https://spring.io/)
 - Spring Webflux
 - Jpa Specification
+- Swagger
+- Lombok
