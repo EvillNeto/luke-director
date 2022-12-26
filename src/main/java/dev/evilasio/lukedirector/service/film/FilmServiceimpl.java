@@ -17,7 +17,9 @@ import dev.evilasio.lukedirector.repository.FilmRepository;
 import dev.evilasio.lukedirector.repository.specification.FilmSpecification;
 import dev.evilasio.lukedirector.service.swapiIntegration.SwapiIntegrationService;
 import lombok.RequiredArgsConstructor;
+import lombok.extern.slf4j.Slf4j;
 
+@Slf4j
 @Service
 @RequiredArgsConstructor
 public class FilmServiceimpl implements FilmService {
@@ -41,7 +43,9 @@ public class FilmServiceimpl implements FilmService {
         } else {
             FilmEntiity film = form.toEntity();
             filmRepository.save(film);
-            return FilmDto.toDto(filmRepository.findAll());
+            List<FilmEntiity> films = filmRepository.findAll();
+            log.info("New Film list:{}", films);
+            return FilmDto.toDto(films);
         }
     }
 
