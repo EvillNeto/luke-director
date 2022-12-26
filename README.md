@@ -9,7 +9,7 @@
 - [Banco H2](http://localhost:8080/h2-console)
 
 ### :rocket: Setup
-- é recomendado possuir a uma versão do Java igual ou superior a 17, pois a api utiliza o Java 17
+- é recomendado possuir uma versão do Java igual ou superior a 17, pois a api utiliza o Java 17
 - A api vem com todas as configurações prontas para a porta 8080 e só é necessario lançala pela sua IDE de preferencia ou atraves do terminal
 
 ### :pushpin: Desafios:
@@ -21,7 +21,7 @@
 - Desafio 2:
     - [x] Escrever a nova listagem de filmes no console da aplicação
     - [x] Salvar a nova listagem de filmes em um banco de dados H2 Database
-    - [] Implementação de testes unitários
+    - [ ] Implementação de testes unitários
 
 ### :bookmark_tabs: Funcionalidades
 
