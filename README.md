@@ -25,7 +25,7 @@
 
 ### :bookmark_tabs: Funcionalidades
 
-- A api possui [Swagger](http://localhost:8080/swagger-ui/index.html) configurado com descrições para cada metodo
+- A api possui documentação feita através do [Swagger](http://localhost:8080/swagger-ui/index.html) com descrições para cada metodo
 - O banco de dados [H2](http://localhost:8080/h2-console) pode ser acessado por um atalho na tela do swagger e possui as configurações de acesso:
 ~~~
 spring.datasource.driverClassName=org.h2.Driver
