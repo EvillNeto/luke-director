@@ -38,14 +38,16 @@ public class FilmDto {
         this.title = filmResponse.getTitle();
         this.episodeId = filmResponse.getEpisodeId();
         this.director = filmResponse.getDirector();
-        this.releaseDate = filmResponse.getReleaseDate().format(DateTimeFormatter.ofPattern("dd/MM/yyyy"));
+        this.releaseDate = filmResponse.getReleaseDate() == null ? null
+                : filmResponse.getReleaseDate().format(DateTimeFormatter.ofPattern("dd/MM/yyyy"));
     }
 
     public FilmDto(FilmEntiity film) {
         this.title = film.getTitle();
         this.episodeId = film.getEpisodeId();
         this.director = film.getDirector();
-        this.releaseDate = film.getReleaseDate().format(DateTimeFormatter.ofPattern("dd/MM/yyyy"));
+        this.releaseDate = film.getReleaseDate() == null ? null
+                : film.getReleaseDate().format(DateTimeFormatter.ofPattern("dd/MM/yyyy"));
     }
 
     public static FilmDto toDto(SwapiFilmResponse film) {
