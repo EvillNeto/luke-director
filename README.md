@@ -21,7 +21,7 @@
 - Desafio 2:
     - [x] Escrever a nova listagem de filmes no console da aplicação
     - [x] Salvar a nova listagem de filmes em um banco de dados H2 Database
-    - [ ] Implementação de testes unitários
+    - [x] Implementação de testes unitários
 
 ### :bookmark_tabs: Funcionalidades
 
