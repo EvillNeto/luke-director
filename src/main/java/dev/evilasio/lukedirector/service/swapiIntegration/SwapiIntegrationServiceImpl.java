@@ -8,7 +8,6 @@ import dev.evilasio.lukedirector.client.SwapiWebClient;
 import dev.evilasio.lukedirector.domain.filter.FilmFilter;
 import dev.evilasio.lukedirector.domain.response.swapi.SwapiFilmResponse;
 import dev.evilasio.lukedirector.domain.response.swapi.SwapiPeopleResponse;
-import lombok.AllArgsConstructor;
 import lombok.RequiredArgsConstructor;
 import reactor.core.publisher.Flux;
 
